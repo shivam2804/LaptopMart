@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Tangerine">
+  <title>Laptop-Mart-Register</title>
+  <link href="c1.css" rel="stylesheet" type="text/css">
+
+  <script>
+    var cartItemsHtml;
+    function displayCartItems() {
+      var itemsInCart = JSON.parse(sessionStorage.getItem("itemsInCart"));
+      if(!itemsInCart) {
+        alert(`Nothing added to cart!`);
+          return;
+      }
+      for (let index = 0; index < itemsInCart.length; index++) {
+        let itemContainerDiv = document.createElement('div'); 
+        itemContainerDiv.classList = "gallery"
+        let itemImage = document.createElement('img'); 
+        itemImage.src = itemsInCart[index].itemImage;
+        itemContainerDiv.appendChild(itemImage);
+
+        let labelDiv = document.createElement('div'); 
+        labelDiv.classList = "desc";
+        labelDiv.innerHTML = itemsInCart[index].itemLabel + "<br>" + itemsInCart[index].itemPrice;
+        itemContainerDiv.appendChild(labelDiv);
+
+        //cartItemsHtml.appendChild(itemContainerDiv);
+        document.getElementById("cartItemsContainer").appendChild(itemContainerDiv);
+      }
+    }
+    window.onload = displayCartItems;
+    </script>
+
+</head>
+
+<body style="background-color:aliceblue;">
+  <header>
+    <div class="w3-container">
+      <h2 class="alignleft"><img src="Laptop-Mart-Logo.png" width="30%"></h2>
+      <h2 class="alignright">Known For Quality</h2>
+    </div>
+  </header>
+  <nav>
+    <div class="w3-bar w3-card-4 w3-blue">
+      <a href="home.html" class="w3-bar-item w3-button">Home</a>
+      <a href="Login.html" class="w3-bar-item w3-button">User Login</a>
+      <a href="Register.html" class="w3-bar-item w3-button">New User</a>
+      <a href="cart.html" class="w3-bar-item w3-button">My Cart</a>
+      <a href="about.html" class="w3-bar-item w3-button">About Us</a>
+      
+    </div>
+  </nav>
+
+  <div id="cartItemsContainer" value="cartItemsHtml"></div>

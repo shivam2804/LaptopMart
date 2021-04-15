@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Tangerine">
+  <title>Laptop-Mart-Login</title>
+  <link href="c1.css" rel="stylesheet" type="text/css">
+
+  <script>
+    const registeredUsers = [{"userName": "Shivam Gupta", "userEmail": "shivamgupta@mylambton.ca", "userPassword": "shivamgupta@mylambton.ca"},
+                              {"userName": "John Doe", "userEmail": "johndoe@mylambton.ca", "userPassword": "johndoe@123!"}]
+    function login() {
+      var uname = document.getElementById("userEmail").value;
+		  var pwd = document.getElementById("userPassword").value;
+      var user = findUser(uname, pwd);
+      if(user){
+          sessionStorage.setItem("currentUserName", user.userName);
+          var currentpath= window.location.pathname;
+          var redirectPath =  `${currentpath.slice(1,-10)}home.html`
+          //window.location = '/home.html';
+          setTimeout(function() {
+            window.location = redirectPath;
+          }, 0);
+      } else {
+        alert('invalid username or password!');
+      }
+    }
+
+    function findUser(uname, pwd) {
+      for (let index = 0; index < registeredUsers.length; index++) {
+        if(registeredUsers[index].userEmail=== uname && registeredUsers[index].userPassword === pwd) {
+          return registeredUsers[index];
+        }
+      }
+      return false;
+    }
+    
+    </script>
+
+</head>
+
+<body style="background-color:aliceblue;">
+  <header>
+    <div class="w3-container">
+      <h2 class="alignleft"><img src="Laptop-Mart-Logo.png" width="30%"></h2>
+      <h2 class="alignright">Known For Quality</h2>
+    </div>
+  </header>
+  <nav>
+    <div class="w3-bar w3-card-4 w3-blue">
+      <a href="home.html" class="w3-bar-item w3-button">Home</a>
+      
+      <a href="Register.html" class="w3-bar-item w3-button">New User</a>
+      <a href="cart.html" class="w3-bar-item w3-button">My Cart</a>
+      <a href="about.html" class="w3-bar-item w3-button">About Us</a>
+      
+    </div>
+  </nav>
+  <h1 class="reg">Already Registered!! Login Here</h1>
+  <br><br>
+  <div class="regdiv" style="float: left;">
+    <form >
+
+        <label>E-Mail Address:</label><br />
+        <input id="userEmail" type="email" placeholder="E-Mail" required><br><br>
+        
+        <label>Password</label><br />
+        <input id="userPassword" type="password" placeholder="Password" required> <br><br>
+        <button style="margin-left: 25px;" onClick="login()">Login</button>
+        <input type="reset">
+  
+      </form>
+  </div>
+<br>
+  <marquee>
+    <img src=Images/marq1.jpg height="300px" width="500px" style="border-radius: 50px 50px;">
+    <img src=Images/marq2.jpg height="300px" width="500px" style="border-radius: 50px 50px;">
+    <img src=Images/marq3.jpg height="300px" width="500px" style="border-radius: 50px 50px;">
+    <img src=Images/marq4.jpg height="300px" width="500px" style="border-radius: 50px 50px;">
+    <img src=Images/marq5.jpg height="300px" width="500px" style="border-radius: 50px 50px;">
+    <img src=Images/marq6.jpg height="300px" width="500px" style="border-radius: 50px 50px;">
+    <img src=Images/marq7.jpg height="300px" width="500px" style="border-radius: 50px 50px;">
+  </marquee>
+
+ 
+<br><br>
+  <div style="background-color: red;">
+    <p style="text-align: center; color: white;">© Copyright 2021 | Laptop Mart</p>
+
+  </div>
